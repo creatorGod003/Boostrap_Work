@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner</title>
+
+
+    <style>
+        .spinner{
+
+            width: 3rem;
+            height: 3rem; 
+            display: inline-block;
+            
+            border: 5px solid black;
+            border-radius: 50%;
+            
+            border-top-color: blue ;
+            border-right-color: blue;
+            border-bottom-color: blue;
+
+            animation: 0.40s loading linear 10;
+        }
+        @keyframes loading {
+            0%{
+
+                transform: rotate(0deg);
+
+            }
+            100%{
+
+                transform: rotate(360deg);
+                
+            }
+        }
+
+        .container{
+
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+
+
+        .main-content{
+
+            position: relative;
+            animation: 2s comeUP linear 1;
+            display: none;
+
+        }
+
+        @keyframes comeUP {
+            from{
+                bottom: -100px;
+                opacity: 0;
+            }
+            to{
+                bottom: 0px;
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+<body onload="myFunction()" style="margin: 0;">
+
+<div class="main-content" id="main-content">
+    <h1 style="text-align: center;">Page is showing</h1>
+    <p style="text-align: center;">This has come after animation right!</p>
+</div>    
+    
+<div class="container">
+
+    <div class="spinner" id="spinner">
+
+    </div>
+
+
+</div>
+    
+
+<script>
+    
+var myVar;
+
+function myFunction() {
+
+  myVar = setTimeout(showPage, 4000);
+
+}
+
+function showPage() {
+  document.getElementById("spinner").style.display = "none";
+  document.getElementById("main-content").style.display = "block";
+}
+
+// why animation of main content occur only after changings its display property to block ?
+
+</script>
+
+
+
+
+</body>
+</html>
